@@ -10,6 +10,10 @@ return array(
     'modules' => array(
         'Application',
         'Training',
+        //'FrontEnd',
+        //'BackEnd',
+        //'Api',
+        //'Wiki',
     ),
 
     // These are various options for the listeners attached to the ModuleManager

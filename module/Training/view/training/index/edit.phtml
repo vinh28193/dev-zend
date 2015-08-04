@@ -1,7 +1,12 @@
 <?php
+$title = 'My Training-Editer';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
 $form = $this->form;
 $form->setAttribute('action', 
-    $this->url('training', array('action' => 'edit', 'id'=>$this->id)));
+    $this->url('training/edit', array('id'=>$this->id)));
 $form->prepare();
 
 echo $this->form()->openTag($form) . PHP_EOL;

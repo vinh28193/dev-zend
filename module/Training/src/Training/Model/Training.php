@@ -9,7 +9,7 @@ use Zend\InputFilter\InputFilterInterface;
 /**
 * 
 */
-class Training implements InputFilterAwareInterface
+class Training extends InputFilter
 {
 	public $id;
 	public $name;

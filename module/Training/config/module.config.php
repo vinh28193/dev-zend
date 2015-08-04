@@ -23,6 +23,11 @@ return array(
                         'controller'    => 'Index',
                         'action'        => 'index',
                     ),
+                    'constraints' => array(
+                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'         => '[0-9]'
+                    ),
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
@@ -31,9 +36,6 @@ return array(
                         'options' => array(
                             'route'    => '/[:controller[/:action[/:id]]]',
                             'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'id'         => '[0-9]'
                             ),
                             'defaults' => array(
                                 '__NAMESPACE__' => 'Training\Controller',
@@ -42,6 +44,61 @@ return array(
                             ),
                         ),
                     ),
+                    'list' =>array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/list',
+                            'constraints' => array(
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Training\Controller',
+                                'controller'    => 'Index',
+                                'action'        => 'list',
+                            ),
+                        ),
+                    ),
+                    'add' =>array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/add',
+                            'constraints' => array(
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Training\Controller',
+                                'controller'    => 'Index',
+                                'action'        => 'add',
+                            ),
+                        ),
+                    ),
+                    'edit' =>array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/edit/:id',
+                            'constraints' => array(
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Training\Controller',
+                                'controller'    => 'Index',
+                                'action'        => 'edit',
+                                'id'            => '[0-9]'
+                            ),
+                        ),
+                    ),
+                    'delete' =>array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/delete/:id',
+                            'constraints' => array(
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Training\Controller',
+                                'controller'    => 'Index',
+                                'action'        => 'delete',
+                                'id'            => '[0-9]'
+                            ),
+                        ),
+                    ),
+
                 ),
             ),
         ),
@@ -78,6 +135,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Training\Controller\Index' => 'Training\Controller\IndexController',
+
         ),
     ),
     'view_manager' => array(
@@ -87,13 +145,15 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'training/index/index' => __DIR__ . '/../view/training/index/index.phtml',
-            'training/index/add' => __DIR__ . '/../view/training/index/add.phtml',
-            'training/index/edit' => __DIR__ . '/../view/training/index/edit.phtml',
-            'training/index/delete' => __DIR__ . '/../view/training/index/delete.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            'layout/layout'             => __DIR__ . '/../view/layout/layout.phtml',
+            'training/index/index'      => __DIR__ . '/../view/training/index/index.phtml',
+            'training/index/list'       => __DIR__ . '/../view/training/index/list.phtml',
+            'training/index/add'        => __DIR__ . '/../view/training/index/add.phtml',
+            'training/index/edit'       => __DIR__ . '/../view/training/index/edit.phtml',
+            'training/index/delete'     => __DIR__ . '/../view/training/index/delete.phtml',
+            'paginator/paginator'       => __DIR__ . '/../view/paginator/paginator.phtml',
+            'error/404'                 => __DIR__ . '/../view/error/404.phtml',
+            'error/index'               => __DIR__ . '/../view/error/index.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',

@@ -13,12 +13,12 @@ class TrainingForm extends Form
 	{
         // we want to ignore the name passed
         parent::__construct('training');
-
         $this->setAttribute('method', 'post');
         $this->add(array(
             'name' => 'id',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'form-control'
             ),
             'options' => array(
                 'label' => 'ID',
@@ -29,9 +29,11 @@ class TrainingForm extends Form
             'name' => 'name',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'form-control'
             ),
             'options' => array(
                 'label' => 'NAME',
+                
             ),
         ));
 
@@ -39,6 +41,7 @@ class TrainingForm extends Form
             'name' => 'value',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'form-control'
             ),
             'options' => array(
                 'label' => 'VALUE',
@@ -51,6 +54,7 @@ class TrainingForm extends Form
                 'type'  => 'submit',
                 'value' => 'Go',
                 'id' => 'submitbutton',
+                'class' => 'btn btn-primary'
             ),
         ));
 

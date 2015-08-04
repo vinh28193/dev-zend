@@ -5,6 +5,9 @@ namespace Training\Model;
 use Zend\Db\TableGateway\AbstractTableGateway;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\Sql\Select;
+use Zend\Paginator\Adapter\ArrayAdapter;
+use Zend\Paginator\Paginator;
 
 /**
 * 
@@ -20,8 +23,12 @@ class TrainingTable extends AbstractTableGateway
         $this->resultSetPrototype->setArrayObjectPrototype(new Training());
         $this->initialize();
 	}
-	public function fetchAll()
+	public function fetchAll($paginated=false)
     {
+        if($paginated){
+            //$arrayAdater = new ArrayAdapter();
+             // return new Paginator::factory($this->select());
+        } 
         return $this->select();
     }
     public function getTraining($id)
