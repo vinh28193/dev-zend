@@ -1,0 +1,37 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1>Hello, world!</h1>
+        <p>Contents ...</p>
+        <p>
+            <a class="btn btn-primary btn-lg">Learn more</a>
+        </p>
+    </div>
+</div>
+
+<div class="table-responsive">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th> ID</th>
+				<th> NAME</th>
+				<th> VALUE</th>
+				<th><a type="button" class="btn btn-primary" href="<?php echo $this->url('training', array( 
+        'action'=>'add'));?>">Add New</a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($trainings as $training):?>
+			<tr>
+				<td><?php echo  $training->id;?></td>
+				<td><?php echo  $training->name;?></td>
+				<td><?php echo  $training->value;?></td>
+				<td>
+					<a type="button" class="btn btn-success" href="<?php echo $this->url('training',array('action'=>'edit', 'id' => $training->id));?>">Edit</a>
+					<a type="button" class="btn btn-danger" href="<?php echo $this->url('training',
+            array('action'=>'delete', 'id' => $training->id));?>">Delete</a>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+</div>
