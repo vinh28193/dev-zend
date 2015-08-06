@@ -14,7 +14,7 @@ $this->headTitle($title);
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach ($paginators as $training):?>
+			<?php foreach ($this->paginators as $training):?>
 			<tr>
 				<td><?php echo $this->escapeHtml($training->id);?></td>
 				<td><?php echo $this->escapeHtml($training->name);?></td>
@@ -31,11 +31,11 @@ $this->headTitle($title);
 </div>
 <?php 
 echo $this->paginationControl(
-     $this->paginator,
+     $this->paginators,
      'sliding',
      'paginator/paginator.phtml',
      array(
-         'route' => 'training'
+         'route' => 'training/list'
      )
  ); 
 ?>

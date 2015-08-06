@@ -28,7 +28,7 @@ class IndexController extends AbstractActionController
     }
     public function indexAction()
     {
- 		
+ 		 return $this->redirect()->toRoute('training/l');
        return new ViewModel(array(
             'trainings' => $this->getTrainingTable()->fetchAll(),
         ));
@@ -36,10 +36,9 @@ class IndexController extends AbstractActionController
 
     public function listAction()
     {
-        return $this->redirect()->toRoute('training');exit();
         $paginator = $this->getTrainingTable()->fetchAll(true);
         $paginator->setCurrentPageNumber((int) $this->params()->fromQuery('page', 1));
-        $paginator->setItemCountPerPage(10);
+        $paginator->setItemCountPerPage(2);
          return new ViewModel(array(
              'paginators' => $paginator
          ));

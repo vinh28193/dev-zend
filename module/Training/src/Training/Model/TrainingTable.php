@@ -6,8 +6,8 @@ use Zend\Db\TableGateway\AbstractTableGateway;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Select;
-use Zend\Paginator\Adapter\ArrayAdapter;
-use Zend\Paginator\Paginator;
+ use Zend\Paginator\Adapter\DbSelect;
+ use Zend\Paginator\Paginator;
 
 /**
 * 
@@ -25,9 +25,17 @@ class TrainingTable extends AbstractTableGateway
 	}
 	public function fetchAll($paginated=false)
     {
+       
         if($paginated){
-            //$arrayAdater = new ArrayAdapter();
-             // return new Paginator::factory($this->select());
+              if ($paginated) {
+                $select = new Select('training');
+                 $paginatorAdapter = new DbSelect(
+                     $select,                     
+                     $this->getAdapter(),
+                     $this->resultSetPrototype
+                 );
+                 return  new Paginator($paginatorAdapter);
+         }
         } 
         return $this->select();
     }
