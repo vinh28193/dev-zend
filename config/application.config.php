@@ -10,7 +10,7 @@ return array(
     'modules' => array(
         'Application',
         'Training',
-        //'FrontEnd',
+        'FrontEnd',
         //'BackEnd',
         //'Api',
         //'Wiki',
